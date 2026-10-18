@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { siteUrl } from '@/data/portfolio-content'
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -13,10 +14,30 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
 })
 
+const title = 'Daxton Moras | Cloud & AI Engineer'
+const description =
+  'AWS-certified Cloud & AI engineer in Dublin running GPU-accelerated edge inference in production, with four years of enterprise AWS and a focus on agentic AI.'
+
 export const metadata: Metadata = {
-  title: 'Daxton Moras | Cloud & AI Engineer',
-  description:
-    'AWS-certified Cloud & AI engineer in Dublin running GPU-accelerated edge inference in production, with four years of enterprise AWS and a focus on agentic AI.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: { canonical: '/' },
+  // Link previews when the site is shared on LinkedIn, Slack and similar.
+  openGraph: {
+    title,
+    description,
+    url: '/',
+    siteName: 'Daxton Moras',
+    type: 'website',
+    images: [{ url: '/profile.jpg', width: 800, height: 800, alt: 'Portrait of Daxton Moras' }],
+  },
+  twitter: {
+    card: 'summary',
+    title,
+    description,
+    images: ['/profile.jpg'],
+  },
 }
 
 export default function RootLayout({

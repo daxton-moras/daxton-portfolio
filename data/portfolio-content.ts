@@ -2,6 +2,9 @@
 // Keep client and colleague names out, and keep project scope honest
 // (personal / test-mode work is labelled as such).
 
+// Production URL on Vercel. Update this if a custom domain is added.
+export const siteUrl = 'https://daxton-portfolio-iota.vercel.app'
+
 export const sections = [
     { id: 'intro', label: 'Intro' },
     { id: 'about', label: 'About' },

@@ -57,6 +57,22 @@ export const focusAreas = [
     'Observability',
 ]
 
+// Public Credly verification pages for each certification and award.
+const credly = (id: string) => `https://www.credly.com/badges/${id}`
+
+export type BadgeLink = { label: string; href: string }
+
+const badges = {
+    solutionsArchitect: credly('fadf5281-c85f-4e35-ba4b-a30b808920d3'),
+    aiPractitioner: credly('04c1fa91-e96a-4ebe-9152-1f4a6a4721a0'),
+    cloudPractitioner: credly('c452e8db-2eae-45a7-88bf-9eb8b1e85d6f'),
+    mvp: [credly('fb1322a2-d7c8-4eb8-85f7-db71017354b1'), credly('14724238-846d-4607-b4ac-2480ad040ea4')],
+    allRounder: credly('410d2ec2-0e23-4f7c-9ad8-fa42bd2501cb'),
+    wiseGuru: credly('623f6388-9c75-4d42-b338-22b3e66e68ab'),
+}
+
+const mvpLinks: BadgeLink[] = badges.mvp.map((href, i) => ({ label: `Badge ${i + 1}`, href }))
+
 export const aboutContent = {
     eyebrow: 'Behind the terminal',
     title: 'Part cloud whisperer, part AI agent wrangler, full\u2011time GPU enthusiast',
@@ -67,12 +83,32 @@ export const aboutContent = {
         'These days I\'m working hands-on with AI agents (Claude-maxxing, if you like), handing them the boring parts of the job so I get the fun ones, and I\'m making my way through NVIDIA\'s AI Infrastructure and Operations course. Next stop: GPU clusters, agentic AI and infrastructure that keeps AI workloads fed.',
     ],
     credentials: [
-        { kicker: 'AWS Certified', title: 'Solutions Architect – Associate', note: null },
-        { kicker: 'AWS Certified', title: 'AI Practitioner', note: null },
-        { kicker: 'AWS Award', title: 'Most Valuable Player (MVP)', note: 'Awarded twice' },
-        { kicker: 'AWS Award', title: 'All-Rounder Award', note: null },
-        { kicker: 'AWS Award', title: 'Wise Guru Award', note: null },
-    ],
+        {
+            kicker: 'AWS Certified',
+            title: 'Solutions Architect – Associate',
+            note: null,
+            links: [{ label: 'Verify on Credly', href: badges.solutionsArchitect }],
+        },
+        {
+            kicker: 'AWS Certified',
+            title: 'AI Practitioner',
+            note: null,
+            links: [{ label: 'Verify on Credly', href: badges.aiPractitioner }],
+        },
+        { kicker: 'AWS Award', title: 'Most Valuable Player (MVP)', note: 'Awarded twice', links: mvpLinks },
+        {
+            kicker: 'AWS Award',
+            title: 'All-Rounder Award',
+            note: null,
+            links: [{ label: 'Verify on Credly', href: badges.allRounder }],
+        },
+        {
+            kicker: 'AWS Award',
+            title: 'Wise Guru Award',
+            note: null,
+            links: [{ label: 'Verify on Credly', href: badges.wiseGuru }],
+        },
+    ] as { kicker: string; title: string; note: string | null; links: BadgeLink[] }[],
 }
 
 export const skillGroups = [
@@ -227,17 +263,16 @@ export const career: CareerEntry[] = [
     },
 ]
 
-export const certifications = [
-    { name: 'AWS Certified Solutions Architect – Associate', status: 'Certified' },
-    { name: 'AWS Certified AI Practitioner', status: 'Certified' },
-    { name: 'AWS Certified Cloud Practitioner', status: 'Certified' },
-    { name: 'NVIDIA AI Infrastructure and Operations', status: 'In progress' },
+export const certifications: { name: string; status: string; href: string | null }[] = [
+    { name: 'AWS Certified Solutions Architect – Associate', status: 'Certified', href: badges.solutionsArchitect },
+    { name: 'AWS Certified AI Practitioner', status: 'Certified', href: badges.aiPractitioner },
+    { name: 'AWS Certified Cloud Practitioner', status: 'Certified', href: badges.cloudPractitioner },
 ]
 
-export const awards = [
-    { name: 'AWS Most Valuable Player (MVP) Award', note: 'Awarded twice' },
-    { name: 'AWS All-Rounder Award', note: null },
-    { name: 'AWS Wise Guru Award', note: null },
+export const awards: { name: string; note: string | null; links: BadgeLink[] }[] = [
+    { name: 'AWS Most Valuable Player (MVP) Award', note: 'Awarded twice', links: mvpLinks },
+    { name: 'AWS All-Rounder Award', note: null, links: [{ label: 'Verify', href: badges.allRounder }] },
+    { name: 'AWS Wise Guru Award', note: null, links: [{ label: 'Verify', href: badges.wiseGuru }] },
 ]
 
 export const contactContent = {

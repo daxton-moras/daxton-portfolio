@@ -35,15 +35,62 @@ export default function About() {
                     </div>
 
                     <div className="stats stagger">
-                        {aboutContent.credentials.map((c) => (
-                            <div className="card stat" key={c.title}>
-                                <div className="stat-kicker">{c.kicker}</div>
-                                <div className="stat-value">{c.title}</div>
-                                {c.note && (
-                                    <div className={`stat-label ${c.note === 'In progress' ? 'pending' : ''}`}>{c.note}</div>
-                                )}
-                            </div>
-                        ))}
+                        {aboutContent.credentials.map((c) => {
+                            const body = (
+                                <>
+                                    <div className="stat-kicker">{c.kicker}</div>
+                                    <div className="stat-value">{c.title}</div>
+                                    {c.note && (
+                                        <div className={`stat-label ${c.note === 'In progress' ? 'pending' : ''}`}>
+                                            {c.note}
+                                        </div>
+                                    )}
+                                </>
+                            )
+
+                            // A single badge makes the whole tile the link; several get their own links.
+                            if (c.links.length === 1) {
+                                return (
+                                    <a
+                                        className="card stat stat-link"
+                                        key={c.title}
+                                        href={c.links[0].href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-cursor="Verify"
+                                        aria-label={`${c.title}: ${c.links[0].label} (opens in a new tab)`}
+                                    >
+                                        {body}
+                                        <span className="stat-verify" aria-hidden="true">
+                                            {c.links[0].label} ↗
+                                        </span>
+                                    </a>
+                                )
+                            }
+
+                            return (
+                                <div className="card stat" key={c.title}>
+                                    {body}
+                                    {c.links.length > 1 && (
+                                        <div className="badge-links">
+                                            {c.links.map((l) => (
+                                                <a
+                                                    key={l.href}
+                                                    className="badge-link"
+                                                    href={l.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    data-cursor="Verify"
+                                                    aria-label={`${c.title} ${l.label} on Credly (opens in a new tab)`}
+                                                >
+                                                    {l.label} ↗
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

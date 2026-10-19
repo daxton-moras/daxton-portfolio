@@ -76,7 +76,7 @@ export default function Credentials() {
 
     return (
         <SectionReveal id="credentials" className="compact">
-            <SectionHeader id="credentials" title="Certifications & Awards" eyebrow="Recognition" />
+            <SectionHeader id="credentials" />
 
             <h3 className="cred-group-title">Certifications</h3>
             <div className="cred-wall stagger">

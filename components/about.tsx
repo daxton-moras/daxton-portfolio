@@ -6,22 +6,9 @@ import { aboutContent, heroContent } from '@/data/portfolio-content'
 export default function About() {
     return (
         <SectionReveal id="about">
-            <SectionHeader id="about" title="About Me" eyebrow={aboutContent.eyebrow} />
+            <SectionHeader id="about" />
 
             <div className="about-grid">
-                <div className="avatar-wrap">
-                    <div className="avatar">
-                        <div className="avatar-photo">
-                            <Image
-                                src="/profile.jpg"
-                                alt={`Portrait of ${heroContent.firstName} ${heroContent.lastName}`}
-                                fill
-                                sizes="(max-width: 900px) 70vw, 288px"
-                            />
-                        </div>
-                    </div>
-                </div>
-
                 <div>
                     <p className="about-lead">{aboutContent.title}</p>
                     <div className="about-copy">
@@ -88,6 +75,19 @@ export default function About() {
                                 </div>
                             )
                         })}
+                    </div>
+                </div>
+
+                <div className="avatar-wrap">
+                    <div className="avatar">
+                        <div className="avatar-photo">
+                            <Image
+                                src="/profile.jpg"
+                                alt={`Portrait of ${heroContent.firstName} ${heroContent.lastName}`}
+                                fill
+                                sizes="(max-width: 900px) 70vw, 288px"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

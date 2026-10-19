@@ -35,7 +35,7 @@ export default function Contact() {
 
     return (
         <SectionReveal id="contact" className="compact contact">
-            <SectionHeader id="contact" title={contactContent.title} eyebrow="Open channel" />
+            <SectionHeader id="contact" />
 
             <div className="contact-grid">
                 <div>
@@ -69,7 +69,7 @@ export default function Contact() {
                                 rel="noopener noreferrer"
                             >
                                 <span className="link-label">{link.label}</span>
-                                <span className="link-handle">{link.handle}</span>
+                                <span className="link-note">{link.note}</span>
                                 <ArrowUpRight size={18} />
                             </a>
                         </li>
@@ -79,7 +79,8 @@ export default function Contact() {
 
             <footer className="footer">
                 <span>
-                    © {new Date().getFullYear()} {heroContent.firstName} {heroContent.lastName} · {heroContent.location}
+                    Designed and built by {heroContent.firstName} {heroContent.lastName} in {heroContent.location.split(',')[0]},{' '}
+                    {new Date().getFullYear()}
                 </span>
                 <a href="#intro" className="back-top" data-cursor="Top">
                     Back to top <ArrowUp size={14} />

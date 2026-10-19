@@ -6,7 +6,7 @@ import { projects } from '@/data/portfolio-content'
 export default function Projects() {
     return (
         <SectionReveal id="projects">
-            <SectionHeader id="projects" title="Projects" eyebrow="Built on my own time" />
+            <SectionHeader id="projects" />
 
             <div className="project-bento stagger">
                 {projects.map((project, i) => (

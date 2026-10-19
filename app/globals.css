@@ -54,7 +54,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -280,7 +280,7 @@ button:focus-visible {
 }
 
 .stage-num {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   color: var(--subtle);
   transition: color 0.3s ease;
@@ -395,7 +395,7 @@ button:focus-visible {
   border-radius: 999px;
   background: none;
   color: var(--subtle);
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
@@ -413,7 +413,7 @@ button:focus-visible {
 .dock-label {
   display: none;
   margin-left: 6px;
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
 }
 
@@ -509,7 +509,7 @@ button:focus-visible {
 }
 
 .stage-index {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
   padding: 2px 9px;
   border: 1px solid var(--border-strong);
@@ -543,13 +543,13 @@ button:focus-visible {
 
 .section-title {
   font-size: clamp(2.4rem, 5.2vw, 3.5rem);
-  font-weight: 300;
+  font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.05;
 }
 
 .eyebrow {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -600,24 +600,12 @@ button:focus-visible {
 }
 
 .tag {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
   padding: 4px 9px;
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--muted);
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--chip-bg);
-  color: var(--foreground);
-  font-size: 12px;
 }
 
 /* ---------- Cards ---------- */
@@ -673,24 +661,26 @@ button:focus-visible {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.25fr 1fr;
   gap: 4.5rem;
   align-items: center;
 }
 
 .hero-name {
-  font-size: clamp(3.5rem, 7.5vw, 5.5rem);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.045em;
+  font-size: clamp(2.9rem, 5.4vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
+/* Each word is a run of animated letters; keep words from breaking apart. */
 .hero-name > span {
-  display: block;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .hero-name-last {
-  color: var(--muted);
+  color: var(--accent-2);
 }
 
 .typed-line {
@@ -699,7 +689,7 @@ button:focus-visible {
   gap: 0.15rem;
   margin-top: 1.5rem;
   min-height: 1.6em;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 14px;
   color: var(--muted);
 }
@@ -736,7 +726,11 @@ button:focus-visible {
 
 .hero-summary strong {
   color: var(--foreground);
-  font-weight: 400;
+  font-weight: 500;
+  background-image: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  background-size: 100% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
 }
 
 .scroll-cue {
@@ -999,7 +993,7 @@ a:focus-visible .hover-arrow-tip {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 5rem;
   align-items: start;
 }
@@ -1083,13 +1077,11 @@ a:focus-visible .hover-arrow-tip {
 }
 
 .about-lead {
-  padding-left: 1.25rem;
-  border-left: 2px solid;
-  border-image: linear-gradient(180deg, var(--accent-1), var(--accent-3)) 1;
-  font-size: 1.45rem;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
 }
 
 .about-copy {
@@ -1117,7 +1109,7 @@ a:focus-visible .hover-arrow-tip {
 }
 
 .stat-kicker {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1149,7 +1141,7 @@ a:focus-visible .hover-arrow-tip {
 .cred-verify {
   display: inline-block;
   margin-top: 0.6rem;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1176,7 +1168,7 @@ a:focus-visible .hover-arrow-tip {
   padding: 2px 10px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1238,7 +1230,7 @@ a:focus-visible .hover-arrow-tip {
 
 .skill-count {
   flex-shrink: 0;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   color: var(--subtle);
 }
@@ -1338,7 +1330,7 @@ a:focus-visible .hover-arrow-tip {
 
 .project-context {
   margin-top: 0.35rem;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
   color: var(--subtle);
 }
@@ -1404,34 +1396,19 @@ a.project-link:hover {
   width: 11px;
   height: 11px;
   border-radius: 999px;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--accent-2);
   background: var(--background);
-}
-
-.timeline-entry.experience .timeline-node {
-  border-color: var(--accent-2);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 16%, transparent);
 }
 
-.timeline-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 .timeline-period {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 13px;
   color: var(--muted);
 }
 
 .timeline-card {
   padding: 1.75rem;
-}
-
-.timeline-card.plain {
-  padding: 0;
 }
 
 .timeline-title {
@@ -1475,11 +1452,45 @@ a.project-link:hover {
   margin-top: 1.25rem;
 }
 
+.study-title {
+  margin-top: 3.5rem;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.study-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+}
+
+.study-card .cred-icon {
+  margin-bottom: 0;
+}
+
+.study-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.study-period {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--subtle);
+}
+
 /* ---------- Credentials: badge cards with a pointer-following edge ---------- */
 
 .cred-group-title {
   margin-bottom: 1rem;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.14em;
@@ -1544,7 +1555,7 @@ a.project-link:hover {
 }
 
 .cred-status {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1693,8 +1704,8 @@ a.project-link:hover {
   letter-spacing: -0.02em;
 }
 
-.link-handle {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+.link-note {
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 13px;
   color: var(--muted);
 }
@@ -1778,6 +1789,7 @@ a.project-link:hover {
   .avatar-wrap {
     position: relative;
     top: auto;
+    order: -1;
   }
 
   .hero-grid,
@@ -1828,8 +1840,17 @@ a.project-link:hover {
 
   .skills-board,
   .cred-wall,
-  .stats {
+  .stats,
+  .study-grid {
     grid-template-columns: 1fr;
+  }
+
+  .study-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .study-period {
+    grid-column: 2;
   }
 
   .skill-panel.wide {
@@ -1862,7 +1883,7 @@ a.project-link:hover {
     grid-template-columns: 1fr auto;
   }
 
-  .link-handle {
+  .link-note {
     display: none;
   }
 

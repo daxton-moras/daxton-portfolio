@@ -10,7 +10,7 @@ export default function Skills() {
 
     return (
         <SectionReveal id="skills">
-            <SectionHeader id="skills" title="Skills & Expertise" eyebrow="Technical toolkit" />
+            <SectionHeader id="skills" />
 
             <div className="skills-board stagger">
                 {groups.map((group, i) => (

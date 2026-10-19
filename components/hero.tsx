@@ -6,11 +6,11 @@ export default function Hero() {
     const summary = heroContent.summary.map((s) => s.text).join('')
     const [role, scope] = heroContent.currently
 
-    // What I'm doing right now, shown beside the name.
+    // A short snapshot of the current role, shown beside the name.
     const rows = [
         { key: 'Role', value: role },
         { key: 'Team', value: scope },
-        { key: 'Location', value: heroContent.location },
+        { key: 'Based in', value: heroContent.location },
     ]
 
     return (
@@ -25,7 +25,7 @@ export default function Hero() {
                     </FadeIn>
 
                     <h1 className="hero-name">
-                        <RevealLetters text={heroContent.firstName} />
+                        <RevealLetters text={heroContent.firstName} />{' '}
                         <RevealLetters text={heroContent.lastName} delay={0.25} className="hero-name-last" />
                     </h1>
 
@@ -56,7 +56,7 @@ export default function Hero() {
                                 <i />
                                 <i />
                             </span>
-                            <span className="panel-title">Currently</span>
+                            <span className="panel-title">Snapshot</span>
                         </div>
 
                         <dl className="panel-rows">
@@ -68,7 +68,7 @@ export default function Hero() {
                             ))}
                         </dl>
 
-                        <div className="panel-label">Focus</div>
+                        <div className="panel-label">Working with</div>
                         <div className="chips chips-pop">
                             {focusAreas.map((item, i) => (
                                 <span className="chip" key={item} style={{ animationDelay: `${1.1 + i * 0.05}s` }}>

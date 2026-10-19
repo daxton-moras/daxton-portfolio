@@ -6,14 +6,24 @@
 export const siteUrl = 'https://daxton-portfolio-iota.vercel.app'
 
 export const sections = [
-    { id: 'intro', label: 'Intro' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
+    { id: 'intro', label: 'Start' },
+    { id: 'about', label: 'Profile' },
+    { id: 'skills', label: 'Capabilities' },
+    { id: 'projects', label: 'Builds' },
     { id: 'career', label: 'Career' },
     { id: 'credentials', label: 'Credentials' },
     { id: 'contact', label: 'Contact' },
 ] as const
+
+// Section titles and the accent line above each one.
+export const sectionCopy = {
+    about: { title: 'Profile', kicker: 'A little background' },
+    skills: { title: 'Capabilities', kicker: 'Tools and practices' },
+    projects: { title: 'Side builds', kicker: 'Made outside work' },
+    career: { title: 'Career path', kicker: 'Roles and study' },
+    credentials: { title: 'Credentials', kicker: 'Certified and recognised' },
+    contact: { title: 'Say hello', kicker: 'Contact' },
+}
 
 export const heroContent = {
     firstName: 'Daxton',
@@ -77,9 +87,8 @@ const badges = {
 const mvpLinks: BadgeLink[] = badges.mvp.map((href, i) => ({ label: `Badge ${i + 1}`, href }))
 
 export const aboutContent = {
-    eyebrow: 'Behind the terminal',
-    title: 'Part cloud whisperer, part AI agent wrangler, full\u2011time GPU enthusiast',
-    lead: 'I make systems behave in places they\'d rather not: locked-down enterprise networks, multi-terabyte data warehouses and GPU boxes running AI on customer sites.',
+    title: 'Part cloud troubleshooter, part AI agent wrangler, full\u2011time GPU enthusiast',
+    lead: 'I get systems running in places that resist them: locked-down enterprise networks, multi-terabyte data warehouses and GPU boxes running AI on customer sites.',
     paragraphs: [
         'By day I deploy bare-metal Ubuntu devices powered by NVIDIA GPUs into client infrastructure. That means negotiating with firewalls, coaxing Linux into cooperating, and once swapping GPUs into replacement hardware because the newer cards weren\'t supported yet. (They are now. I like to think word got around.)',
         'Before that, four years at AWS taught me that every "the database is slow" ticket has a root cause, and it\'s usually a queue. Two MVP awards later, I still enjoy a well-tuned workload management config more than is strictly normal.',
@@ -279,11 +288,10 @@ export const awards: { name: string; note: string | null; links: BadgeLink[] }[]
 ]
 
 export const contactContent = {
-    title: "Let's Connect",
     blurb: 'Open to conversations about cloud, data and AI infrastructure roles, or just a good debugging story.',
     email: 'moras.daxton@gmail.com',
     links: [
-        { label: 'GitHub', handle: '@daxton-moras', href: 'https://github.com/daxton-moras' },
-        { label: 'LinkedIn', handle: 'daxtonmoras', href: 'https://www.linkedin.com/in/daxtonmoras' },
+        { label: 'GitHub', note: 'Code and side builds', href: 'https://github.com/daxton-moras' },
+        { label: 'LinkedIn', note: 'Career history', href: 'https://www.linkedin.com/in/daxtonmoras' },
     ],
 }

@@ -1,20 +1,20 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { JetBrains_Mono, Manrope } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import { siteUrl } from '@/data/portfolio-content'
 
-const geistSans = Geist({
+const sans = Manrope({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  variable: '--font-sans',
 })
 
-const geistMono = Geist_Mono({
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-mono',
 })
 
-const title = 'Daxton Moras | Cloud & AI Engineer'
+const title = 'Daxton Moras — Cloud & AI Engineer'
 const description =
   'AWS-certified Cloud & AI engineer in Dublin running GPU-accelerated edge inference in production, with four years of enterprise AWS and a focus on agentic AI.'
 
@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <body>

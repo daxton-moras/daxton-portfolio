@@ -8,8 +8,8 @@ Personal portfolio for Daxton Moras, a Cloud & AI engineer in Dublin: AWS-certif
 
 - [Next.js 16](https://nextjs.org) (App Router, statically prerendered) with React 19 and TypeScript
 - Hand-written CSS in `app/globals.css`, with dark and light themes via `next-themes`
-- Geist and Geist Mono fonts via `next/font`
-- Canvas particle field, custom cursor and pointer effects, plus `framer-motion` for text animation
+- Manrope and JetBrains Mono fonts via `next/font`
+- Night and sunrise sky themes, a canvas particle field, custom cursor and pointer effects, plus `framer-motion` for text animation
 - Hosted on [Vercel](https://vercel.com)
 
 ## Editing content

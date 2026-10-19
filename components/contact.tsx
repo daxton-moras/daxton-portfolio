@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowUpRight, Check, Copy } from 'lucide-react'
+import { ArrowUp, ArrowUpRight, Check, Copy } from 'lucide-react'
+import SectionHeader from '@/components/section-header'
 import SectionReveal from '@/components/section-reveal'
 import { contactContent, heroContent } from '@/data/portfolio-content'
 
@@ -33,14 +34,17 @@ export default function Contact() {
     }
 
     return (
-        <SectionReveal id="contact" className="compact">
+        <SectionReveal id="contact" className="compact contact">
+            <SectionHeader id="contact" title={contactContent.title} eyebrow="Open channel" />
+
             <div className="contact-grid">
                 <div>
-                    <h2 className="section-title">{contactContent.title}</h2>
                     <p className="contact-blurb">{contactContent.blurb}</p>
 
-                    <div className="card email-box">
-                        <a href={`mailto:${contactContent.email}`} data-cursor="Email">{contactContent.email}</a>
+                    <div className="email-box">
+                        <a className="email-link" href={`mailto:${contactContent.email}`} data-cursor="Email">
+                            {contactContent.email}
+                        </a>
                         <button
                             type="button"
                             className="copy-btn"
@@ -49,40 +53,37 @@ export default function Contact() {
                             onClick={copyEmail}
                             aria-label={copied ? 'Email copied' : 'Copy email to clipboard'}
                         >
-                            {copied ? <Check size={15} /> : <Copy size={15} />}
+                            {copied ? <Check size={16} /> : <Copy size={16} />}
                         </button>
                     </div>
                 </div>
 
-                <div>
-                    <span className="eyebrow">Elsewhere</span>
-                    <div className="elsewhere stagger">
-                        {contactContent.links.map((link) => (
+                <ul className="elsewhere stagger">
+                    {contactContent.links.map((link) => (
+                        <li key={link.label}>
                             <a
-                                className="card link-card"
-                                data-magnetic
+                                className="link-row"
                                 data-cursor="Visit"
-                                key={link.label}
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <span>
-                                    {link.label}
-                                    <small>{link.handle}</small>
-                                </span>
-                                <ArrowUpRight size={16} />
+                                <span className="link-label">{link.label}</span>
+                                <span className="link-handle">{link.handle}</span>
+                                <ArrowUpRight size={18} />
                             </a>
-                        ))}
-                    </div>
-                </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
             <footer className="footer">
                 <span>
-                    © {new Date().getFullYear()} {heroContent.firstName} {heroContent.lastName}
+                    © {new Date().getFullYear()} {heroContent.firstName} {heroContent.lastName} · {heroContent.location}
                 </span>
-                <span>{heroContent.location}</span>
+                <a href="#intro" className="back-top" data-cursor="Top">
+                    Back to top <ArrowUp size={14} />
+                </a>
             </footer>
         </SectionReveal>
     )

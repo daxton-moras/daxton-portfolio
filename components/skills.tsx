@@ -1,40 +1,35 @@
+import SectionHeader from '@/components/section-header'
 import SectionReveal from '@/components/section-reveal'
 import { practiceSkills, skillGroups } from '@/data/portfolio-content'
 
+// Larger groups get wider tiles so the board packs without gaps.
+const spanFor = (count: number) => (count >= 7 ? 'wide' : '')
+
 export default function Skills() {
+    const groups = [...skillGroups, practiceSkills]
+
     return (
         <SectionReveal id="skills">
-            <div className="section-header">
-                <h2 className="section-title">Skills &amp; Expertise</h2>
-                <span className="eyebrow">Technical toolkit</span>
-            </div>
+            <SectionHeader id="skills" title="Skills & Expertise" eyebrow="Technical toolkit" />
 
-            <div className="skills-grid">
-                <div className="skills-main stagger">
-                    {skillGroups.map((group) => (
-                        <div className="card skill-card" key={group.title}>
-                            <h3 className="eyebrow">{group.title}</h3>
-                            <div className="chips stagger">
-                                {group.items.map((item) => (
-                                    <span className="chip" key={item}>
-                                        {item}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="card skill-card tall">
-                    <h3 className="eyebrow">{practiceSkills.title}</h3>
-                    <div className="chips stagger">
-                        {practiceSkills.items.map((item) => (
-                            <span className="chip" key={item}>
-                                {item}
+            <div className="skills-board stagger">
+                {groups.map((group, i) => (
+                    <div className={`card skill-panel ${spanFor(group.items.length)}`} key={group.title}>
+                        <div className="skill-head">
+                            <h3 className="skill-title">{group.title}</h3>
+                            <span className="skill-count" aria-hidden="true">
+                                {String(i + 1).padStart(2, '0')} · {group.items.length}
                             </span>
-                        ))}
+                        </div>
+                        <div className="chips">
+                            {group.items.map((item) => (
+                                <span className="chip" key={item}>
+                                    {item}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         </SectionReveal>
     )

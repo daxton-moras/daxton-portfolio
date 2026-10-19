@@ -1,77 +1,95 @@
+import { Award, BadgeCheck } from 'lucide-react'
+import SectionHeader from '@/components/section-header'
 import SectionReveal from '@/components/section-reveal'
-import { awards, certifications } from '@/data/portfolio-content'
+import { awards, certifications, type BadgeLink } from '@/data/portfolio-content'
 
-function CredName({ name, href }: { name: string; href: string | null | undefined }) {
-    if (!href) return <span>{name}</span>
-    return (
-        <a
-            className="cred-link"
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="Verify"
-            aria-label={`${name}: verify on Credly (opens in a new tab)`}
-        >
-            {name}
-            <span className="cred-arrow" aria-hidden="true">
-                ↗
+type Item = {
+    kind: 'cert' | 'award'
+    name: string
+    status: string | null
+    links: BadgeLink[]
+}
+
+function CredCard({ item }: { item: Item }) {
+    const Icon = item.kind === 'cert' ? BadgeCheck : Award
+    const body = (
+        <>
+            <span className="cred-icon" aria-hidden="true">
+                <Icon size={18} />
             </span>
-        </a>
+            <span className="cred-name">{item.name}</span>
+            {item.status && <span className={`cred-status ${item.status === 'In progress' ? 'pending' : ''}`}>{item.status}</span>}
+        </>
+    )
+
+    // A single badge makes the whole card the link; several get their own links.
+    if (item.links.length === 1) {
+        return (
+            <a
+                className="card holo-card"
+                href={item.links[0].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="Verify"
+                aria-label={`${item.name}: verify on Credly (opens in a new tab)`}
+            >
+                {body}
+                <span className="cred-verify" aria-hidden="true">
+                    Verify on Credly ↗
+                </span>
+            </a>
+        )
+    }
+
+    return (
+        <div className="card holo-card">
+            {body}
+            {item.links.length > 1 && (
+                <span className="badge-links">
+                    {item.links.map((l) => (
+                        <a
+                            key={l.href}
+                            className="badge-link"
+                            href={l.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-cursor="Verify"
+                            aria-label={`${item.name} ${l.label} on Credly (opens in a new tab)`}
+                        >
+                            {l.label} ↗
+                        </a>
+                    ))}
+                </span>
+            )}
+        </div>
     )
 }
 
 export default function Credentials() {
+    const certs: Item[] = certifications.map((c) => ({
+        kind: 'cert',
+        name: c.name,
+        status: c.status,
+        links: c.href ? [{ label: 'Verify', href: c.href }] : [],
+    }))
+    const awardItems: Item[] = awards.map((a) => ({ kind: 'award', name: a.name, status: a.note, links: a.links }))
+
     return (
         <SectionReveal id="credentials" className="compact">
-            <div className="section-header">
-                <h2 className="section-title">Certifications &amp; Awards</h2>
-                <span className="eyebrow">Recognition</span>
+            <SectionHeader id="credentials" title="Certifications & Awards" eyebrow="Recognition" />
+
+            <h3 className="cred-group-title">Certifications</h3>
+            <div className="cred-wall stagger">
+                {certs.map((c) => (
+                    <CredCard item={c} key={c.name} />
+                ))}
             </div>
 
-            <div className="cred-grid stagger">
-                <div className="card cred-card">
-                    <h3 className="eyebrow">Certifications</h3>
-                    <ul className="cred-list stagger">
-                        {certifications.map((c) => (
-                            <li key={c.name}>
-                                <CredName name={c.name} href={c.href} />
-                                <span className={`cred-status ${c.status === 'In progress' ? 'pending' : ''}`}>
-                                    {c.status}
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="card cred-card">
-                    <h3 className="eyebrow">Awards</h3>
-                    <ul className="cred-list stagger">
-                        {awards.map((a) => (
-                            <li key={a.name}>
-                                <CredName name={a.name} href={a.links.length === 1 ? a.links[0].href : null} />
-                                {a.links.length > 1 ? (
-                                    <span className="badge-links">
-                                        {a.links.map((l) => (
-                                            <a
-                                                key={l.href}
-                                                className="badge-link"
-                                                href={l.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                data-cursor="Verify"
-                                                aria-label={`${a.name} ${l.label} on Credly (opens in a new tab)`}
-                                            >
-                                                {l.label} ↗
-                                            </a>
-                                        ))}
-                                    </span>
-                                ) : (
-                                    a.note && <span className="cred-status">{a.note}</span>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+            <h3 className="cred-group-title">Awards</h3>
+            <div className="cred-wall stagger">
+                {awardItems.map((a) => (
+                    <CredCard item={a} key={a.name} />
+                ))}
             </div>
         </SectionReveal>
     )

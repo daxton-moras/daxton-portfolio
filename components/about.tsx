@@ -1,14 +1,12 @@
 import Image from 'next/image'
+import SectionHeader from '@/components/section-header'
 import SectionReveal from '@/components/section-reveal'
 import { aboutContent, heroContent } from '@/data/portfolio-content'
 
 export default function About() {
     return (
         <SectionReveal id="about">
-            <div className="section-header">
-                <h2 className="section-title">About Me</h2>
-                <span className="eyebrow">{aboutContent.eyebrow}</span>
-            </div>
+            <SectionHeader id="about" title="About Me" eyebrow={aboutContent.eyebrow} />
 
             <div className="about-grid">
                 <div className="avatar-wrap">
@@ -19,7 +17,6 @@ export default function About() {
                                 alt={`Portrait of ${heroContent.firstName} ${heroContent.lastName}`}
                                 fill
                                 sizes="(max-width: 900px) 70vw, 288px"
-                                priority={false}
                             />
                         </div>
                     </div>

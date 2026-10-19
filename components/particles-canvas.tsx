@@ -7,7 +7,7 @@ type Dash = { bx: number; by: number; seed: number }
 // Gradient stops the ring tints dashes with, per theme.
 const PALETTES = {
     dark: { base: [255, 255, 255], hues: [[96, 140, 255], [167, 123, 255], [255, 122, 182]] },
-    light: { base: [43, 40, 35], hues: [[47, 95, 208], [122, 79, 214], [201, 79, 135]] },
+    light: { base: [42, 31, 26], hues: [[194, 65, 12], [190, 24, 93], [126, 34, 206]] },
 }
 
 const LEVELS = 6 // intensity buckets; one canvas path per bucket keeps drawing cheap

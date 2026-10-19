@@ -1,7 +1,7 @@
 import ParticlesCanvas from '@/components/particles-canvas'
+import SkyBackdrop from '@/components/sky-backdrop'
 import CustomCursor from '@/components/custom-cursor'
 import PointerEffects from '@/components/pointer-effects'
-import ScrollProgress from '@/components/scroll-progress'
 import SectionRail from '@/components/section-rail'
 import Hero from '@/components/hero'
 import About from '@/components/about'
@@ -14,9 +14,9 @@ import Contact from '@/components/contact'
 export default function HomePage() {
   return (
     <div className="site-shell">
+      <SkyBackdrop />
       <div className="grain-layer" aria-hidden="true" />
       <ParticlesCanvas />
-      <ScrollProgress />
       <SectionRail />
       <CustomCursor />
       <PointerEffects />

@@ -1992,31 +1992,13 @@ a.project-link:hover {
 }
 
 .cursor-ring.active::before {
-  width: 74px;
-  height: 30px;
-  background: var(--foreground);
+  width: 46px;
+  height: 46px;
   border-color: var(--foreground);
 }
 
 .cursor-ring.pressed::before {
   transform: scale(0.85);
-}
-
-.cursor-label {
-  position: relative;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  color: var(--background);
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.2s ease, transform 0.3s ease;
-}
-
-.cursor-ring.active .cursor-label {
-  opacity: 1;
-  transform: none;
 }
 
 .has-custom-cursor,

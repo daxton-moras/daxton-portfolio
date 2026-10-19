@@ -3,12 +3,11 @@
 import { useEffect, useRef } from 'react'
 
 // A dot that tracks the pointer exactly and a ring that trails it. Over links and
-// buttons the ring opens into a pill showing what a click will do. Mouse and
-// trackpad only; touch devices and reduced-motion users keep the native cursor.
+// buttons the ring grows slightly. Mouse and trackpad only; touch devices and
+// reduced-motion users keep the native cursor.
 export default function CustomCursor() {
     const dotRef = useRef<HTMLDivElement | null>(null)
     const ringRef = useRef<HTMLDivElement | null>(null)
-    const labelRef = useRef<HTMLSpanElement | null>(null)
 
     useEffect(() => {
         const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
@@ -17,8 +16,7 @@ export default function CustomCursor() {
 
         const dot = dotRef.current
         const ring = ringRef.current
-        const label = labelRef.current
-        if (!dot || !ring || !label) return
+        if (!dot || !ring) return
 
         document.documentElement.classList.add('has-custom-cursor')
 
@@ -45,10 +43,8 @@ export default function CustomCursor() {
                 document.documentElement.classList.add('cursor-visible')
             }
 
-            const target = (e.target as Element | null)?.closest<HTMLElement>('a, button, [data-cursor]')
-            const text = target?.dataset.cursor ?? (target ? (target.tagName === 'A' ? 'Open' : 'Click') : '')
+            const target = (e.target as Element | null)?.closest('a, button')
             ring.classList.toggle('active', Boolean(target))
-            if (label.textContent !== text) label.textContent = text
         }
 
         const onLeave = () => {
@@ -77,9 +73,7 @@ export default function CustomCursor() {
 
     return (
         <div className="cursor-layer" aria-hidden="true">
-            <div ref={ringRef} className="cursor-ring">
-                <span ref={labelRef} className="cursor-label" />
-            </div>
+            <div ref={ringRef} className="cursor-ring" />
             <div ref={dotRef} className="cursor-dot" />
         </div>
     )

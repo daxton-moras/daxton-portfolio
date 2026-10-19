@@ -18,7 +18,7 @@ export default function Hero() {
             <div className="section-inner hero-grid">
                 <div>
                     <FadeIn delay={0.2}>
-                        <a href="#contact" className="announce" data-cursor="Contact">
+                        <a href="#contact" className="announce">
                             <span className="live-dot">{heroContent.availability}</span>
                             <HoverArrow />
                         </a>
@@ -39,10 +39,10 @@ export default function Hero() {
                     </p>
 
                     <FadeIn delay={1.3} className="hero-ctas">
-                        <a href="#contact" className="btn btn-primary" data-cursor="Contact">
+                        <a href="#contact" className="btn btn-primary">
                             Get in touch <HoverArrow />
                         </a>
-                        <a href="#projects" className="btn btn-secondary" data-cursor="Projects">
+                        <a href="#projects" className="btn btn-secondary">
                             See my work <HoverArrow />
                         </a>
                     </FadeIn>
@@ -80,7 +80,7 @@ export default function Hero() {
                 </FadeIn>
             </div>
 
-            <a href="#about" className="scroll-cue" data-cursor="Scroll" aria-label="Scroll to About">
+            <a href="#about" className="scroll-cue" aria-label="Scroll to About">
                 <span />
             </a>
         </section>

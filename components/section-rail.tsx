@@ -20,7 +20,6 @@ function ThemeToggle({ className }: { className: string }) {
             className={className}
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            data-cursor="Theme"
         >
             {isDark ? <Sun size={13} /> : <Moon size={13} />}
         </button>
@@ -102,7 +101,6 @@ export default function SectionRail() {
                                     onClick={() => goTo(id)}
                                     aria-label={`Navigate to ${label}`}
                                     aria-current={i === active ? 'true' : undefined}
-                                    data-cursor={label}
                                 >
                                     <span className="stage-node" />
                                     <span className="stage-num">{stageNumber(i)}</span>

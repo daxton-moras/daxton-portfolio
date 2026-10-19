@@ -42,14 +42,13 @@ export default function Contact() {
                     <p className="contact-blurb">{contactContent.blurb}</p>
 
                     <div className="email-box">
-                        <a className="email-link" href={`mailto:${contactContent.email}`} data-cursor="Email">
+                        <a className="email-link" href={`mailto:${contactContent.email}`}>
                             {contactContent.email}
                         </a>
                         <button
                             type="button"
                             className="copy-btn"
                             data-magnetic
-                            data-cursor={copied ? 'Copied' : 'Copy'}
                             onClick={copyEmail}
                             aria-label={copied ? 'Email copied' : 'Copy email to clipboard'}
                         >
@@ -63,7 +62,6 @@ export default function Contact() {
                         <li key={link.label}>
                             <a
                                 className="link-row"
-                                data-cursor="Visit"
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -82,7 +80,7 @@ export default function Contact() {
                     Designed and built by {heroContent.firstName} {heroContent.lastName} in {heroContent.location.split(',')[0]},{' '}
                     {new Date().getFullYear()}
                 </span>
-                <a href="#intro" className="back-top" data-cursor="Top">
+                <a href="#intro" className="back-top">
                     Back to top <ArrowUp size={14} />
                 </a>
             </footer>

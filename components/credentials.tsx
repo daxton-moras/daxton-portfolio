@@ -30,7 +30,6 @@ function CredCard({ item }: { item: Item }) {
                 href={item.links[0].href}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor="Verify"
                 aria-label={`${item.name}: verify on Credly (opens in a new tab)`}
             >
                 {body}
@@ -53,7 +52,6 @@ function CredCard({ item }: { item: Item }) {
                             href={l.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            data-cursor="Verify"
                             aria-label={`${item.name} ${l.label} on Credly (opens in a new tab)`}
                         >
                             {l.label} ↗

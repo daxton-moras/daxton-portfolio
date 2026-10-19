@@ -41,7 +41,6 @@ export default function About() {
                                         href={c.links[0].href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        data-cursor="Verify"
                                         aria-label={`${c.title}: ${c.links[0].label} (opens in a new tab)`}
                                     >
                                         {body}
@@ -64,7 +63,6 @@ export default function About() {
                                                     href={l.href}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    data-cursor="Verify"
                                                     aria-label={`${c.title} ${l.label} on Credly (opens in a new tab)`}
                                                 >
                                                     {l.label} ↗
